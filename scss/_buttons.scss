@@ -2,7 +2,11 @@
 @import "buttons-mixins";
 
 @if not($enable-framework) {
-  @import "license";
+/*!
+ * StrapLess Buttons v1.0 (http://github.com/strapless/buttons)
+ * Inspiration from (https://getbootstrap.com) and (https://material.io/components/web/catalog/buttons)
+ * Licensed under MIT (https://github.com/strapless/buttons/blob/master/LICENSE)
+ */
 }
 
 .btn {
