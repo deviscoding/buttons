@@ -1,6 +1,10 @@
 @import "buttons-variables";
 @import "buttons-mixins";
 
+@if not($enable-framework) {
+  @import "license";
+}
+
 .btn {
   position: relative;
   display: inline-flex;

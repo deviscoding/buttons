@@ -2,6 +2,8 @@
 @import "strapless/base/scss/base";
 @import "bs4-shim";
 
+$enable-framework:      false !default;
+
 $btn-padding-x:         (space-x(md) * 1rem)  !default;
 $btn-padding-y:         (space-y(md) * 1rem)  !default;
 $btn-line-height:       $line-height-base !default;
