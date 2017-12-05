@@ -1,0 +1,76 @@
+@import "buttons-variables";
+
+// Outline Button Mixin
+@mixin btn-outline-variant($color, $active-color: darken($color, 7.5%)) {
+  &.btn-outline {
+    color: $color !important;
+    .active &, &:active, &.active, &:hover, &:focus {
+      border-color:     $active-color !important;
+      color:            $active-color !important;
+      background-color: rgba(0, 0, 0, .05) !important;
+    }
+  }
+}
+
+// Material Design Flat Button Mixin
+@mixin btn-flat-variant($color, $active-color: darken($color, 7.5%)) {
+  &.btn-flat {
+    color: $color !important;
+    .active &, &:active, &.active, &:hover, &:focus {
+      @if $btn-border-width > 0 {
+        border-color:     transparent !important;
+      }
+      color:            $active-color !important;
+      background-color: rgba(0, 0, 0, .03) !important;
+    }
+  }
+}
+
+// Master Button Variant Mixin (Calls Flat & Outline Button Mixins)
+@mixin btn-variant($background, $border, $active-background: darken($background, 7.5%), $active-border: darken($border, 10%)) {
+  @if $background != transparent {
+    background-color: $background;
+  }
+  @if $btn-border-width > 0 {
+    border-color:     $border;
+  }
+  @if isLight($background) {
+    color: color("black");
+  } @else {
+    // Only using here due to dark bg/light font.
+    //-webkit-font-smoothing: antialiased;
+    color: color("white");
+  }
+  // Disabled comes first so active can properly restyle
+  .disabled &, &:disabled {
+    opacity:          .5;
+  }
+  .active &, &:active, &.active, &:hover, &:focus {
+    background-color: $active-background;
+    border-color:     $active-border;
+    text-decoration:  none;
+    @if isLight($background) {
+      color: $black;
+    } @else {
+      color: $white;
+    }
+  }
+  @include btn-outline-variant($background, $active-background);
+  @include btn-flat-variant($background, $active-background);
+}
+
+// Button sizes
+@mixin button-size($padding-vertical, $padding-horizontal, $font-size, $line-height, $border-radius) {
+  padding: $padding-vertical $padding-horizontal;
+  font-size: $font-size;
+  line-height: $line-height;
+  border-radius: $border-radius;
+}
+
+@mixin btn-variants() {
+  @each $color, $value in $theme-colors {
+    .btn-#{$color} {
+      @include btn-variant($value, $value);
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "name": "strapless/buttons",
+  "description": "Drop in replacement for Bootstrap buttons, with Material Design effects. Designed for the StrapLess Framework, but usable as a standalone component.",
+  "keywords": [
+    "buttons",
+    "sass",
+    "scss",
+    "strapless",
+    "bootstrap",
+    "material",
+    "ripple",
+    "css"
+  ],
+  "homepage": "https://www.github.com/strapless/buttons",
+  "version": "1.0",
+  "authors": [
+    {
+      "name": "Aaron M Jones",
+      "homepage": "http://www.jonesiscoding.com"
+    }
+  ],
+  "license": "MIT",
+  "require": {
+    "strapless/base": "^1.1",
+    "strapless/colors": "^1.0"
+  }
+}

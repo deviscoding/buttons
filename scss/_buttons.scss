@@ -1,0 +1,146 @@
+@import "buttons-variables";
+@import "buttons-mixins";
+
+.btn {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  white-space: nowrap;
+  align-items: center;
+  align-content: center;
+  user-select: none;
+  padding: 0 $btn-padding-x;
+  letter-spacing: .04em;
+  min-height: $btn-height;
+  line-height: $btn-height;
+  text-transform: uppercase;
+  text-decoration: none;
+  overflow: hidden;
+  -webkit-appearance: none;
+  font-weight: $btn-font-weight;
+  font-size: $font-size-base;
+  border-width: $btn-border-width;
+  cursor: default;
+  background-color: transparent;
+  &:hover {
+    text-decoration: none;
+    @if not($btn-cursor == auto or $btn-cursor == default) {
+      cursor: $btn-cursor;
+    }
+  }
+  @if theme(transitions) {
+    transition: $btn-transition;
+  }
+  @if theme(rounded) {
+    border-radius: $btn-border-radius;
+  }
+  @if $btn-border-width == 0 {
+    &.btn-outline {
+      border-width: 1px;
+    }
+  }
+  &.btn-flat {
+    box-shadow: none !important;
+    @if $btn-border-width > 0 {
+      border-color: transparent !important;
+    }
+  }
+}
+
+// Material Design Ripple
+@keyframes ripple {
+  0% {
+    transform: scale(0, 0);
+    opacity: 1;
+  }
+  20% {
+    transform: scale(25, 25);
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(40, 40);
+  }
+}
+
+.btn:not(.no-ripple)::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  background: rgba(255, 255, 255, .5);
+  opacity: 0;
+  border-radius: 100%;
+  transform: scale(1, 1) translate(-50%);
+  transform-origin: 50% 50%;
+}
+
+.btn:focus:not(:active)::after {
+  animation: ripple 1s ease-out;
+}
+
+@if component("icons") and variable-exists(icon-css-prefix) {
+  //noinspection SassScssUnresolvedVariable
+  .btn > .#{$icon-css-prefix} + span {
+      margin-left: $btn-padding-x;
+  }
+}
+
+// Themed Buttons
+@each $color, $value in $theme-colors {
+  .btn-#{$color} {
+    @include btn-variant($value, $value);
+  }
+}
+.btn-default {
+  @include btn-variant($btn-default-bg,transparent);
+}
+
+// Sized Buttons
+.btn-lg {
+  font-size:  $font-size-lg;
+  padding:    0 $btn-lg-padding-x;
+  min-height: $btn-lg-height;
+  line-height: $btn-lg-height;
+}
+
+.btn-sm {
+  font-size: $font-size-sm;
+  padding: 0 $btn-sm-padding-x;
+  min-height: $btn-sm-height;
+  line-height: $btn-sm-height;
+}
+.btn-xs {
+  font-size: ($font-size-base * .75);
+  padding: 0 $btn-xs-padding-x;
+  min-height: $btn-xs-height;
+  line-height: $btn-xs-height;
+}
+
+a.btn {
+  &.disabled,
+  fieldset[disabled] & {
+    pointer-events: none; // Future-proof disabling of clicks on `<a>` elements
+  }
+}
+
+.btn-block {
+  flex-grow: 1;
+  width: 100%;
+}
+
+// Vertically space out multiple block buttons
+.btn-block + .btn-block {
+  margin-top: 5px;
+}
+
+// Specificity overrides
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+  &.btn-block {
+    width: 100%;
+  }
+}

@@ -1,0 +1,32 @@
+@import "strapless/colors/scss/colors";
+@import "strapless/base/scss/base";
+@import "bs4-shim";
+
+$btn-padding-x:         (space-x(md) * 1rem)  !default;
+$btn-padding-y:         (space-y(md) * 1rem)  !default;
+$btn-line-height:       $line-height-base !default;
+$btn-height:            ($font-size-base * $btn-line-height) + ($btn-padding-y * 2) !default;
+
+$btn-xs-padding-x:      (space-x(xs) * 1rem)  !default;
+$btn-xs-padding-y:      (space-y(xs) * 1rem)  !default;
+$btn-xs-height:         (($btn-xs-padding-y * 2) + $line-height-sm) !default;
+
+$btn-sm-padding-x:      (space-x(sm) * 1rem)  !default;
+$btn-sm-padding-y:      (space-y(sm) * 1rem) !default;
+$btn-sm-height:         (($btn-sm-padding-y * 2) + $line-height-sm) !default;
+
+$btn-lg-padding-x:      (space-x(lg) * 1rem)  !default;
+$btn-lg-padding-y:      (space-y(lg) * 1rem)  !default;
+$btn-lg-height:         (($btn-lg-padding-y * 2) + $line-height-lg) !default;
+
+$btn-border-width:      0 !default;
+$btn-font-weight:       if(variable-exists(font-weight-medium), $font-weight-medium, $font-weight-bold) !default;
+
+$btn-default-color:     gray(600);
+$btn-default-bg:        color(white);
+$btn-border-radius:     $border-radius-sm;
+
+$btn-transition:        background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
+$btn-raised-transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1), -webkit-box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+
+$btn-cursor:            pointer !default;
