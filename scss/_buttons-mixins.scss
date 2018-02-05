@@ -1,62 +1,78 @@
 @import "buttons-variables";
 
 // Outline Button Mixin
-@mixin btn-outline-variant($color, $active-color: darken($color, 7.5%)) {
-  &.btn-outline {
-    color: $color !important;
-    .active &, &:active, &.active, &:hover, &:focus {
-      border-color:     $active-color !important;
-      color:            $active-color !important;
-      background-color: rgba(0, 0, 0, .05) !important;
-    }
+@mixin btn-transparent-variant($outline: false, $color: $btn-default-color, $color-hover: darken($color, 7.5%), $active-background: rgba($color, .05), $active-border: darken($color, 7.5%)) {
+  // Set Border Color
+  $border-color: transparent;
+  $border-color-hover: transparent;
+  $border-color-active: transparent;
+  @if $outline {
+    $border-color: $color;
+    $border-color-hover: $color-hover;
+    $border-color-active: $active-border;
   }
+
+  color: $color;
+  background-color: transparent;
+  border-color: $border-color;
+
+  &:hover {
+    color: $color-hover;
+    background-color: $active-background;
+    border-color: $border-color-hover;
+  }
+
+  &.active, .active > & {
+    color: $active-border;
+    background-color: $active-background;
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 $btn-focus-width rgba($color, .5);
+  }
+}
+
+@mixin btn-outline-variant($color, $color-hover: darken($color, 7.5%), $active-background: rgba($color, .05), $active-border: darken($color, 7.5%)) {
+  @include btn-transparent-variant(true, $color, $color-hover, $active-background, $active-border);
 }
 
 // Material Design Flat Button Mixin
-@mixin btn-flat-variant($color, $active-color: darken($color, 7.5%)) {
-  &.btn-flat {
-    color: $color !important;
-    .active &, &:active, &.active, &:hover, &:focus {
-      @if $btn-border-width > 0 {
-        border-color:     transparent !important;
-      }
-      color:            $active-color !important;
-      background-color: rgba(0, 0, 0, .03) !important;
-    }
-  }
+@mixin btn-flat-variant($color, $color-hover: darken($color, 7.5%), $active-background: rgba($color, .05)) {
+  @include btn-transparent-variant(false, $color, $color-hover, $active-background, transparent);
+}
+
+@function _btn-color($background) {
+  @return if(isLight($background), $btn-dark-color, $btn-light-color);
 }
 
 // Master Button Variant Mixin (Calls Flat & Outline Button Mixins)
-@mixin btn-variant($background, $border, $active-background: darken($background, 7.5%), $active-border: darken($border, 10%)) {
+@mixin btn-variant($background, $border, $hover-background: darken($background, 7.5%), $hover-border: darken($border, 10%), $active-background: darken($background, 10%), $active-border: darken($border, 12.5%)) {
+  $color: _btn-color($background);
+  $active-color: _btn-color($active-background);
+  $hover-color: _btn-color($hover-background);
+
   @if $background != transparent {
     background-color: $background;
+    color: $color;
+  } @else {
+    color: $btn-dark-color;
   }
   @if $btn-border-width > 0 {
     border-color:     $border;
   }
-  @if isLight($background) {
-    color: color("black");
-  } @else {
-    // Only using here due to dark bg/light font.
-    //-webkit-font-smoothing: antialiased;
-    color: color("white");
+  &:hover {
+    @if($background != $hover-background) { background-color: $hover-background; }
+    @if($hover-border != $border && $btn-border-width > 0) { border-color: $hover-border; }
+    color: $hover-color;
   }
-  // Disabled comes first so active can properly restyle
-  .disabled &, &:disabled {
-    opacity:          .5;
+  .active > &, &.active {
+    @if($background != $active-background) { background-color: $active-background; }
+    @if($active-border != $border && $btn-border-width > 0) { border-color: $active-border; }
+    color: $active-color;
   }
-  .active &, &:active, &.active, &:hover, &:focus {
-    background-color: $active-background;
-    border-color:     $active-border;
-    text-decoration:  none;
-    @if isLight($background) {
-      color: $black;
-    } @else {
-      color: $white;
-    }
+  &:focus {
+    box-shadow: 0 0 0 $btn-focus-width rgba($active-border, .5);
   }
-  @include btn-outline-variant($background, $active-background);
-  @include btn-flat-variant($background, $active-background);
 }
 
 // Button sizes
@@ -71,6 +87,19 @@
   @each $color, $value in $theme-colors {
     .btn-#{$color} {
       @include btn-variant($value, $value);
+    }
+  }
+
+  @each $color, $value in $theme-colors {
+    .btn-outline-#{$color} {
+      @include btn-outline-variant($value);
+    }
+  }
+
+
+  @each $color, $value in $theme-colors {
+    .btn-flat-#{$color} {
+      @include btn-flat-variant($value)
     }
   }
 }

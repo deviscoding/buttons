@@ -2,11 +2,11 @@
 @import "buttons-mixins";
 
 @if not($enable-framework) {
-/*!
- * StrapLess Buttons v1.0 (http://github.com/strapless/buttons)
- * Inspiration from (https://getbootstrap.com) and (https://material.io/components/web/catalog/buttons)
- * Licensed under MIT (https://github.com/strapless/buttons/blob/master/LICENSE)
- */
+  /*!
+   * StrapLess Buttons v1.0 (http://github.com/strapless/buttons)
+   * Inspiration from (https://getbootstrap.com) and (https://material.io/components/web/catalog/buttons)
+   * Licensed under MIT (https://github.com/strapless/buttons/blob/master/LICENSE)
+   */
 }
 
 .btn {
@@ -42,17 +42,18 @@
   @if theme(rounded) {
     border-radius: $btn-border-radius;
   }
-  @if $btn-border-width == 0 {
-    &.btn-outline {
-      border-width: 1px;
-    }
+  &:not([class*=btn-flat-]) {
+    @include elevation(1);
   }
-  &.btn-flat {
-    box-shadow: none !important;
-    @if $btn-border-width > 0 {
-      border-color: transparent !important;
-    }
-  }
+}
+
+.btn-compact {
+  padding-left: $btn-padding-x / 2;
+  padding-right: $btn-padding-x / 2;
+}
+
+.btn-dense {
+  letter-spacing: 0;
 }
 
 // Material Design Ripple
@@ -92,16 +93,13 @@
 @if component("icons") and variable-exists(icon-css-prefix) {
   //noinspection SassScssUnresolvedVariable
   .btn > .#{$icon-css-prefix} + span {
-      margin-left: $btn-padding-x;
+    margin-left: $btn-padding-x;
   }
 }
 
 // Themed Buttons
-@each $color, $value in $theme-colors {
-  .btn-#{$color} {
-    @include btn-variant($value, $value);
-  }
-}
+@include btn-variants();
+
 .btn-default {
   @include btn-variant($btn-default-bg,transparent);
 }
