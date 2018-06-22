@@ -1,11 +1,11 @@
 /*!
-   * DevIsCoding Buttons v1.1.1 (http://github.com/deviscoding/buttons)
+   * DevIsCoding Buttons v1.1.2 (http://github.com/deviscoding/buttons)
    * Inspiration from (https://getbootstrap.com) and (https://material.io/components/web/catalog/buttons)
    * Licensed under MIT (https://github.com/strapless/buttons/blob/master/LICENSE)
    */
 .btn {
   position: relative;
-  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
   -webkit-justify-content: center;
