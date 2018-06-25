@@ -23,18 +23,18 @@ $btn-lg-padding-y:      (space-y(lg) * 1rem)  !default;
 $btn-lg-height:         (($btn-lg-padding-y * 2) + $line-height-lg) !default;
 
 // Colors
-$btn-dark-color:        #000;
-$btn-light-color:       #fff;
-$btn-default-color:     gray(600);
-$btn-default-bg:        color(white);
+$btn-dark-color:        #000 !default;
+$btn-light-color:       #fff !default;
+$btn-default-color:     gray(600) !default;
+$btn-default-bg:        #fff !default;
 
 // Borders
 $btn-border-width:      0 !default;
-$btn-focus-width:       1px;
-$btn-border-radius:     $border-radius-sm;
+$btn-focus-width:       1px !default;
+$btn-border-radius:     $border-radius-sm !default;
 
 // Other
 $btn-font-weight:       if(variable-exists(font-weight-medium), $font-weight-medium, $font-weight-bold) !default;
 $btn-transition:        background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
-$btn-raised-transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1), -webkit-box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+$btn-raised-transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1), -webkit-box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1) !default;
 $btn-cursor:            pointer !default;

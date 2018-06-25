@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "c5cd9fa813c2ca24fa09cc3dd1a25217",
+    "content-hash": "6fe8331d26a602e05a5d4607b146df70",
     "packages": [
         {
             "name": "deviscoding/base",
