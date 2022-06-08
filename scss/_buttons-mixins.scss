@@ -62,12 +62,12 @@
   }
   &:hover {
     @if($background != $hover-background) { background-color: $hover-background; }
-    @if($hover-border != $border && $btn-border-width > 0) { border-color: $hover-border; }
+    @if($hover-border != $border and $btn-border-width > 0) { border-color: $hover-border; }
     color: $hover-color;
   }
   .active > &, &.active {
     @if($background != $active-background) { background-color: $active-background; }
-    @if($active-border != $border && $btn-border-width > 0) { border-color: $active-border; }
+    @if($active-border != $border and $btn-border-width > 0) { border-color: $active-border; }
     color: $active-color;
   }
   &:focus {
