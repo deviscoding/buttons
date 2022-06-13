@@ -1,23 +1,23 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6fe8331d26a602e05a5d4607b146df70",
+    "content-hash": "3c8d1141e09e94deddd0772d2641ef63",
     "packages": [
         {
             "name": "deviscoding/base",
-            "version": "2.0.2",
+            "version": "2.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/deviscoding/base.git",
-                "reference": "422e043118fe98cef847f34a0b57c1f65f8c7fff"
+                "reference": "e5ea652de177b8316044842cd76c4b4bdd2478f1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/deviscoding/base/zipball/422e043118fe98cef847f34a0b57c1f65f8c7fff",
-                "reference": "422e043118fe98cef847f34a0b57c1f65f8c7fff",
+                "url": "https://api.github.com/repos/deviscoding/base/zipball/e5ea652de177b8316044842cd76c4b4bdd2478f1",
+                "reference": "e5ea652de177b8316044842cd76c4b4bdd2478f1",
                 "shasum": ""
             },
             "replace": {
@@ -44,20 +44,24 @@
                 "strapless",
                 "variables"
             ],
-            "time": "2018-05-24T12:28:48+00:00"
+            "support": {
+                "issues": "https://github.com/deviscoding/base/issues",
+                "source": "https://github.com/deviscoding/base/tree/master"
+            },
+            "time": "2018-06-20T12:44:34+00:00"
         },
         {
             "name": "deviscoding/colors",
-            "version": "1.0.9",
+            "version": "1.0.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/deviscoding/colors.git",
-                "reference": "dd4a6ee5aab611b0f4e7e2d1f8c481caa1203e39"
+                "reference": "d270a9c454931436ecaec6584d366e67eb2cf2a0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/deviscoding/colors/zipball/dd4a6ee5aab611b0f4e7e2d1f8c481caa1203e39",
-                "reference": "dd4a6ee5aab611b0f4e7e2d1f8c481caa1203e39",
+                "url": "https://api.github.com/repos/deviscoding/colors/zipball/d270a9c454931436ecaec6584d366e67eb2cf2a0",
+                "reference": "d270a9c454931436ecaec6584d366e67eb2cf2a0",
                 "shasum": ""
             },
             "replace": {
@@ -83,7 +87,11 @@
                 "scss",
                 "strapless"
             ],
-            "time": "2018-05-23T15:47:48+00:00"
+            "support": {
+                "issues": "https://github.com/deviscoding/colors/issues",
+                "source": "https://github.com/deviscoding/colors/tree/v1.0.10"
+            },
+            "time": "2022-06-03T17:15:19+00:00"
         }
     ],
     "packages-dev": [],
@@ -93,5 +101,6 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
-    "platform-dev": []
+    "platform-dev": [],
+    "plugin-api-version": "2.3.0"
 }

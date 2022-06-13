@@ -1,6 +1,6 @@
-@import "deviscoding/colors/scss/colors";
-@import "deviscoding/base/scss/base";
-@import "bs4-shim";
+@use "deviscoding/colors/scss/colors";
+@use "deviscoding/base/scss/base";
+@use "bs4-shim";
 
 $enable-framework:      false !default;
 

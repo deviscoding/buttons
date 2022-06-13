@@ -1,4 +1,6 @@
-@import "buttons-variables";
+@use "buttons-variables";
+@use "deviscoding/colors/scss/colors-variables";
+@use "deviscoding/colors/scss/colors-functions";
 
 // Outline Button Mixin
 @mixin btn-transparent-variant($outline: false, $color: $btn-default-color, $color-hover: darken($color, 7.5%), $active-background: rgba($color, .05), $active-border: darken($color, 7.5%)) {

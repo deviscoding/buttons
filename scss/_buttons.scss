@@ -1,5 +1,6 @@
-@import "buttons-variables";
-@import "buttons-mixins";
+@use "sass:math";
+@use "buttons-variables";
+@use "buttons-mixins";
 
 @if not($enable-framework) {
   /*!
@@ -48,8 +49,8 @@
 }
 
 .btn-compact {
-  padding-left: $btn-padding-x / 2;
-  padding-right: $btn-padding-x / 2;
+  padding-left: math.div($btn-padding-x, 2);
+  padding-right: math.div($btn-padding-x, 2);
 }
 
 .btn-dense {
